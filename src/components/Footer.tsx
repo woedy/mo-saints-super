@@ -80,7 +80,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Mo Saints. All rights reserved. This is a demo website.
+            © {new Date().getFullYear()} Mo Saints. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground">
             Crafted with earth, intention, and care.

@@ -9,29 +9,30 @@ export default function Privacy() {
         <p className="text-foreground font-medium">Last updated: February 2026</p>
         <p>
           Mo Saints respects your privacy and is committed to protecting your personal information. 
-          This is a demo website — no real personal data is collected, stored, or processed.
+          This policy outlines how we handle the data you share with us.
         </p>
-        <h2 className="font-serif text-xl text-foreground pt-2">Information We Collect (Demo)</h2>
+        <h2 className="font-serif text-xl text-foreground pt-2">Information We Collect</h2>
         <p>
-          In this demo environment, information entered into forms (name, email, address) is stored 
-          locally in your browser's localStorage. It is not transmitted to any server or third party.
+          We collect information you provide directly to us, such as when you create an account, 
+          place an order, or contact our support team. This may include your name, email address, 
+          shipping address, and payment information.
         </p>
         <h2 className="font-serif text-xl text-foreground pt-2">How We Use Information</h2>
         <p>
-          In a live environment, Mo Saints would use your information solely to process orders, 
-          improve your experience, and communicate with you about your purchases. We would never 
-          sell your personal information to third parties.
+          We use your information solely to process orders, improve your experience, and 
+          communicate with you about your purchases. We do not sell your personal 
+          information to third parties.
         </p>
-        <h2 className="font-serif text-xl text-foreground pt-2">Cookies</h2>
+        <h2 className="font-serif text-xl text-foreground pt-2">Security</h2>
         <p>
-          This demo site uses localStorage to simulate shopping cart, wishlist, and account features. 
-          No tracking cookies are used.
+          We implement a variety of security measures to maintain the safety of your 
+          personal information when you place an order or enter, submit, or access 
+          your personal information.
         </p>
         <h2 className="font-serif text-xl text-foreground pt-2">Your Rights</h2>
         <p>
-          You can clear all demo data at any time by clearing your browser's localStorage. 
-          In a live environment, you would have the right to access, correct, or delete your 
-          personal information at any time.
+          You have the right to access, correct, or delete your personal information 
+          at any time. Please contact us if you wish to exercise these rights.
         </p>
         <h2 className="font-serif text-xl text-foreground pt-2">Contact</h2>
         <p>

@@ -7,7 +7,7 @@ export default function Returns() {
       <h1 className="font-serif text-3xl text-foreground mb-6">Returns & Refunds</h1>
       <div className="space-y-6 text-sm text-muted-foreground leading-relaxed">
         <p className="text-foreground font-medium">
-          Demo Policy — In a live Mo Saints store, the following policy would apply:
+          Our standard return policy applies to all orders:
         </p>
         <h2 className="font-serif text-xl text-foreground pt-2">Return Window</h2>
         <p>

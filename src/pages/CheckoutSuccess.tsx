@@ -17,7 +17,7 @@ export default function CheckoutSuccess() {
           Order #{orderId}
         </p>
         <p className="text-sm text-muted-foreground mb-8">
-          This is a demo order. No real payment has been processed. You can view your order history in your account.
+          You can view your order history and tracking status in your account.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link

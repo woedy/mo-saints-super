@@ -132,8 +132,7 @@ export default function Checkout() {
 
         {step === 3 && (
           <div className="space-y-4">
-            <h2 className="font-serif text-xl text-foreground mb-4">Payment (Demo)</h2>
-            <p className="text-xs text-muted-foreground mb-2">This is a demo. No real payment will be processed.</p>
+            <h2 className="font-serif text-xl text-foreground mb-4">Payment</h2>
             <input placeholder="Card number" value={payment.card} onChange={e => setPayment({...payment, card: e.target.value})} className={inputClass} />
             <div className="grid grid-cols-2 gap-4">
               <input placeholder="MM/YY" value={payment.expiry} onChange={e => setPayment({...payment, expiry: e.target.value})} className={inputClass} />
