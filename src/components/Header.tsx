@@ -5,6 +5,7 @@ import { useCart } from "@/contexts/CartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/mo-saints-logo.png";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { to: "/shop", label: "Shop" },
@@ -57,6 +58,7 @@ export default function Header() {
 
           {/* Icons */}
           <div className="flex items-center gap-3 sm:gap-4">
+            <ThemeToggle />
             <Link
               to="/wishlist"
               className="relative p-2 text-muted-foreground hover:text-primary transition-colors"
