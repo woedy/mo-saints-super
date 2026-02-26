@@ -4,6 +4,7 @@ import heroImage from "@/assets/hero-salt.jpg";
 import ritualImage from "@/assets/ritual-bath.jpg";
 import { getFeaturedProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import logo from "@/assets/mo-saints-logo.png";
 
 export default function Index() {
   const featured = getFeaturedProducts();
@@ -22,6 +23,16 @@ export default function Index() {
         </div>
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl animate-fade-in">
+            <div className="mb-8 flex items-center justify-center sm:justify-start">
+              <img 
+                src={logo} 
+                alt="Mo Saints Logo" 
+                width="120" 
+                height="120" 
+                className="w-24 h-24 sm:w-32 sm:h-32 object-contain filter drop-shadow-lg"
+                fetchPriority="high"
+              />
+            </div>
             <p className="text-salt-white/80 text-sm tracking-[0.2em] uppercase mb-4 font-body">
               Earth-Based Wellness
             </p>

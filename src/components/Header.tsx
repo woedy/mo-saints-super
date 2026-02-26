@@ -4,6 +4,7 @@ import { ShoppingBag, Heart, User, Menu, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { useAuth } from "@/contexts/AuthContext";
+import logo from "@/assets/mo-saints-logo.png";
 
 const navLinks = [
   { to: "/shop", label: "Shop" },
@@ -23,9 +24,18 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-          <Link to="/" className="font-serif text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
-            Mo Saints
+          <Link to="/" className="flex items-center gap-2 group transition-transform hover:scale-[1.02]">
+            <img 
+              src={logo} 
+              alt="Mo Saints" 
+              width="40" 
+              height="40" 
+              className="w-10 h-10 object-contain"
+              fetchPriority="high"
+            />
+            <span className="font-serif text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
+              Mo Saints
+            </span>
           </Link>
 
           {/* Desktop Nav */}
