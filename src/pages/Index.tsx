@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-salt.jpg";
+import heroImage from "@/assets/Mo-Hero.png";
 import ritualImage from "@/assets/ritual-bath.jpg";
 import { getFeaturedProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";

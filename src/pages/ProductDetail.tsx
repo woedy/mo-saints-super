@@ -13,7 +13,7 @@ export default function ProductDetail() {
   const { addItem } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
   const { toast } = useToast();
-  const [sizeIndex, setSizeIndex] = useState(0);
+  const [variationIndex, setVariationIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
   if (!product) {
@@ -28,14 +28,15 @@ export default function ProductDetail() {
   }
 
   const liked = isInWishlist(product.id);
-  const selectedSize = product.sizes[sizeIndex];
+  const selectedVariation = product.variations[variationIndex];
+  const displayImage = selectedVariation.image || product.image;
 
   const handleAddToCart = () => {
     if (!product.inStock) return;
-    addItem(product, sizeIndex, quantity);
+    addItem(product, variationIndex, quantity);
     toast({
       title: "Added to Cart",
-      description: `${product.name} (${selectedSize.label}) × ${quantity}`,
+      description: `${product.name} (${selectedVariation.label}) × ${quantity}`,
     });
   };
 
@@ -52,9 +53,9 @@ export default function ProductDetail() {
         {/* Image */}
         <div className="aspect-square rounded-lg overflow-hidden bg-muted">
           <img
-            src={product.image}
+            src={displayImage}
             alt={product.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-all duration-300"
           />
         </div>
 
@@ -84,23 +85,24 @@ export default function ProductDetail() {
             {product.longDescription}
           </p>
 
-          {/* Size Selection */}
+          {/* Variation Selection */}
           <div className="mb-6">
             <p className="text-sm font-medium text-foreground mb-3">
-              Size / Weight
+              {product.variationLabel || "Package Duration"}
             </p>
             <div className="flex flex-wrap gap-2">
-              {product.sizes.map((size, i) => (
+              {product.variations.map((variation, i) => (
                 <button
                   key={i}
-                  onClick={() => setSizeIndex(i)}
+                  onClick={() => setVariationIndex(i)}
                   className={`px-4 py-2 rounded-md text-sm border transition-colors ${
-                    sizeIndex === i
+                    variationIndex === i
                       ? "border-primary bg-primary/5 text-primary font-medium"
                       : "border-border text-muted-foreground hover:border-primary/50"
                   }`}
                 >
-                  {size.label} — {size.weight}
+                  {variation.label}
+                  {variation.weight && ` — ${variation.weight}`}
                 </button>
               ))}
             </div>
@@ -108,7 +110,7 @@ export default function ProductDetail() {
 
           {/* Price */}
           <p className="text-2xl font-serif font-semibold text-foreground mb-6">
-            ${selectedSize.price.toFixed(2)}
+            ${selectedVariation.price.toFixed(2)}
           </p>
 
           {/* Quantity & Add to Cart */}

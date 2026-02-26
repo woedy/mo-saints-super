@@ -35,7 +35,7 @@ export default function Orders() {
               <div className="space-y-1 mb-3">
                 {order.items.map((item, i) => (
                   <p key={i} className="text-xs text-muted-foreground">
-                    {item.product.name} ({item.product.sizes[item.sizeIndex].label}) × {item.quantity}
+                    {item.product.name} ({item.product.variations[item.variationIndex].label}) × {item.quantity}
                   </p>
                 ))}
               </div>

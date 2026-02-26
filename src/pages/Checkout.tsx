@@ -147,12 +147,12 @@ export default function Checkout() {
             <h2 className="font-serif text-xl text-foreground mb-4">Review Your Order</h2>
             <div className="space-y-3">
               {items.map((item) => (
-                <div key={`${item.product.id}-${item.sizeIndex}`} className="flex justify-between text-sm">
+                <div key={`${item.product.id}-${item.variationIndex}`} className="flex justify-between text-sm">
                   <span className="text-foreground">
-                    {item.product.name} ({item.product.sizes[item.sizeIndex].label}) × {item.quantity}
+                    {item.product.name} ({item.product.variations[item.variationIndex].label}) × {item.quantity}
                   </span>
                   <span className="text-foreground font-medium">
-                    ${(item.product.sizes[item.sizeIndex].price * item.quantity).toFixed(2)}
+                    ${(item.product.variations[item.variationIndex].price * item.quantity).toFixed(2)}
                   </span>
                 </div>
               ))}

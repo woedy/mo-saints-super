@@ -16,9 +16,9 @@ export default function Shop() {
 
     switch (sortBy) {
       case "price-asc":
-        return [...result].sort((a, b) => a.sizes[0].price - b.sizes[0].price);
+        return [...result].sort((a, b) => a.variations[0].price - b.variations[0].price);
       case "price-desc":
-        return [...result].sort((a, b) => b.sizes[0].price - a.sizes[0].price);
+        return [...result].sort((a, b) => b.variations[0].price - a.variations[0].price);
       default:
         return [...result].sort((a, b) => a.name.localeCompare(b.name));
     }

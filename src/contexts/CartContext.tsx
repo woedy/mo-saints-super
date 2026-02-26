@@ -3,15 +3,15 @@ import type { Product } from "@/data/products";
 
 export interface CartItem {
   product: Product;
-  sizeIndex: number;
+  variationIndex: number;
   quantity: number;
 }
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (product: Product, sizeIndex: number, quantity?: number) => void;
-  removeItem: (productId: string, sizeIndex: number) => void;
-  updateQuantity: (productId: string, sizeIndex: number, quantity: number) => void;
+  addItem: (product: Product, variationIndex: number, quantity?: number) => void;
+  removeItem: (productId: string, variationIndex: number) => void;
+  updateQuantity: (productId: string, variationIndex: number, quantity: number) => void;
   clearCart: () => void;
   totalItems: number;
   subtotal: number;
@@ -43,37 +43,37 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("mosains-cart", JSON.stringify(items));
   }, [items]);
 
-  const addItem = useCallback((product: Product, sizeIndex: number, quantity = 1) => {
+  const addItem = useCallback((product: Product, variationIndex: number, quantity = 1) => {
     setItems((prev) => {
       const existing = prev.find(
-        (i) => i.product.id === product.id && i.sizeIndex === sizeIndex
+        (i) => i.product.id === product.id && i.variationIndex === variationIndex
       );
       if (existing) {
         return prev.map((i) =>
-          i.product.id === product.id && i.sizeIndex === sizeIndex
+          i.product.id === product.id && i.variationIndex === variationIndex
             ? { ...i, quantity: i.quantity + quantity }
             : i
         );
       }
-      return [...prev, { product, sizeIndex, quantity }];
+      return [...prev, { product, variationIndex, quantity }];
     });
   }, []);
 
-  const removeItem = useCallback((productId: string, sizeIndex: number) => {
+  const removeItem = useCallback((productId: string, variationIndex: number) => {
     setItems((prev) =>
-      prev.filter((i) => !(i.product.id === productId && i.sizeIndex === sizeIndex))
+      prev.filter((i) => !(i.product.id === productId && i.variationIndex === variationIndex))
     );
   }, []);
 
   const updateQuantity = useCallback(
-    (productId: string, sizeIndex: number, quantity: number) => {
+    (productId: string, variationIndex: number, quantity: number) => {
       if (quantity <= 0) {
-        removeItem(productId, sizeIndex);
+        removeItem(productId, variationIndex);
         return;
       }
       setItems((prev) =>
         prev.map((i) =>
-          i.product.id === productId && i.sizeIndex === sizeIndex
+          i.product.id === productId && i.variationIndex === variationIndex
             ? { ...i, quantity }
             : i
         )
@@ -86,7 +86,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
   const subtotal = items.reduce(
-    (sum, i) => sum + i.product.sizes[i.sizeIndex].price * i.quantity,
+    (sum, i) => sum + i.product.variations[i.variationIndex].price * i.quantity,
     0
   );
 

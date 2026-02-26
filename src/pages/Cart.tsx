@@ -51,15 +51,15 @@ export default function Cart() {
         {/* Items */}
         <div className="lg:col-span-2 space-y-4">
           {items.map((item) => {
-            const size = item.product.sizes[item.sizeIndex];
+            const variation = item.product.variations[item.variationIndex];
             return (
               <div
-                key={`${item.product.id}-${item.sizeIndex}`}
+                key={`${item.product.id}-${item.variationIndex}`}
                 className="flex gap-4 p-4 border border-border rounded-lg bg-card"
               >
                 <Link to={`/product/${item.product.id}`} className="flex-shrink-0">
                   <img
-                    src={item.product.image}
+                    src={variation.image || item.product.image}
                     alt={item.product.name}
                     className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md"
                   />
@@ -70,10 +70,10 @@ export default function Cart() {
                       <Link to={`/product/${item.product.id}`} className="font-serif text-sm font-medium text-foreground hover:text-primary transition-colors">
                         {item.product.name}
                       </Link>
-                      <p className="text-xs text-muted-foreground">{size.label} — {size.weight}</p>
+                      <p className="text-xs text-muted-foreground">{variation.label} — {variation.weight}</p>
                     </div>
                     <button
-                      onClick={() => removeItem(item.product.id, item.sizeIndex)}
+                      onClick={() => removeItem(item.product.id, item.variationIndex)}
                       className="p-1 text-muted-foreground hover:text-destructive transition-colors"
                     >
                       <X className="w-4 h-4" />
@@ -82,21 +82,21 @@ export default function Cart() {
                   <div className="flex items-center justify-between mt-3">
                     <div className="flex items-center border border-border rounded-md">
                       <button
-                        onClick={() => updateQuantity(item.product.id, item.sizeIndex, item.quantity - 1)}
+                        onClick={() => updateQuantity(item.product.id, item.variationIndex, item.quantity - 1)}
                         className="p-1.5 text-muted-foreground hover:text-foreground"
                       >
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="px-3 text-xs font-medium">{item.quantity}</span>
                       <button
-                        onClick={() => updateQuantity(item.product.id, item.sizeIndex, item.quantity + 1)}
+                        onClick={() => updateQuantity(item.product.id, item.variationIndex, item.quantity + 1)}
                         className="p-1.5 text-muted-foreground hover:text-foreground"
                       >
                         <Plus className="w-3 h-3" />
                       </button>
                     </div>
                     <p className="text-sm font-medium text-foreground">
-                      ${(size.price * item.quantity).toFixed(2)}
+                      ${(variation.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
                 </div>

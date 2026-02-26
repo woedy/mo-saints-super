@@ -10,7 +10,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const { isInWishlist, toggleWishlist } = useWishlist();
   const liked = isInWishlist(product.id);
-  const basePrice = Math.min(...product.sizes.map((s) => s.price));
+  const basePrice = Math.min(...product.variations.map((v) => v.price));
 
   return (
     <div className="group relative animate-fade-in">
@@ -31,7 +31,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.shortDescription}
           </p>
           <p className="text-sm font-medium text-foreground">
-            {product.sizes.length > 1 ? "From " : ""}${basePrice.toFixed(2)}
+            {product.variations.length > 1 ? "From " : ""}${basePrice.toFixed(2)}
           </p>
           {!product.inStock && (
             <span className="text-xs text-destructive font-medium">Out of Stock</span>
